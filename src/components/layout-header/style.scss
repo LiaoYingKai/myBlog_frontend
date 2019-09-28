@@ -1,21 +1,41 @@
 .header{
-	margin-top: 30px;
+	background-color: #006ac6;
+	&__content{
+		width: 980px;
+		height: 45px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		a{
+			color: #fff;
+			text-decoration:none;
+			font-size: 18px;
+			&:hover{
+				color: #ff8113;
+			}
+			
+		}
+	}
+
 	ul{
 		display: flex;
 		justify-content: center;
 		li{
 			margin-left: 10px;
-			a{
-				text-decoration:none;
-				font-size: 18px;
-				color: #000;
-				&:hover{
-					color: #ff8113;
-				}
-				
-			}
+			
 			.activeLink{
 				color: #ff8113;
+			}
+		}
+	}
+	&__user {
+		a {
+			line-height: 45px;
+			padding: 0px 12px;
+			font-size: 16px;
+			&:first-child {
+				border-right: 1px solid #fff;
 			}
 		}
 	}
