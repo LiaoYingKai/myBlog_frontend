@@ -1,0 +1,25 @@
+.register {
+	&__container{
+
+		width: 440px;
+		margin: 0 auto;
+		border-radius: 5px;
+		border: 1px #eee solid;
+		padding: 12px 24px;
+	}
+	&__title {
+		text-align: center;
+		line-height: 30px;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	&__button-group{
+		text-align: center;
+		button{
+			&:first-child{
+				margin-right: 12px;
+			}
+		}
+	}
+}
