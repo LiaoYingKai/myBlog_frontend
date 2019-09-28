@@ -1,6 +1,8 @@
 import loadComponent from './loadable';
 
 const Home = loadComponent({ loader: () => import('../pages/Home') });
+const Login = loadComponent({ loader: () => import('../pages/Login') });
+const Register = loadComponent({ loader: () => import('../pages/Register') });
 const About = loadComponent({ loader: () => import('../pages/About') });
 const Contact = loadComponent({ loader: () => import('../pages/Contact') });
 const Me =  loadComponent({ loader: () => import('../pages/Contact/Me') });
@@ -10,7 +12,16 @@ export const config = [
 	{
 		path: '/',
 		component: Home,
-		name: 'Home',
+		exact: true,
+	},
+	{
+		path: '/login',
+		component: Login,
+		exact: true,
+	},
+	{
+		path: '/register',
+		component: Register,
 		exact: true,
 	},
 	{
@@ -18,6 +29,7 @@ export const config = [
 		component: About,
 		name: 'About',	
 	},
+
 	{
 		path: '/contact',
 		component: Contact,
