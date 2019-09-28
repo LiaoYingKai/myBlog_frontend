@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import todo from './reducer/todo';
+import user from './reducer/user';
 
 const musicPlayer = combineReducers({
-	todo
+	user,
 });
 
 export default musicPlayer;

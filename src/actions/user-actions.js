@@ -37,15 +37,16 @@ export function startLogin({ account, password }) {
 	};
 }
 
-export function LoginSuccess(payload) {
+export function LoginSuccess(data) {
 	return {
 		type: LOGIN_SUCCESS,
-		payload,
+		data,
 	};
 }
 
-export function LoginFail() {
+export function LoginFail(error) {
 	return {
-		type: LOGIN_FAIL
+		type: LOGIN_FAIL,
+		error
 	};
 }
