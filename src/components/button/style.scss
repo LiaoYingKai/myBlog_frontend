@@ -1,0 +1,31 @@
+@mixin style($background-color, $color, $border-color) {
+	background-color: $background-color;
+	border-color: $border-color;
+	color: $color;
+}
+.button {
+	border-radius: 3px;
+	padding: 6px 24px;
+	border: 1px solid;
+	font-size: 16px;
+	cursor: pointer;
+	&--solid {
+		@include style(#006ac6, #fff, #006ac6);
+	}
+	&--hole {
+		@include style(transparent, #c8c8c8, #c8c8c8);
+		&:hover {
+			@include style(transparent, #006ac6, #006ac6);
+		}
+	}
+	&--disabled {
+		@include style(transparent, #eee, #eee);
+		cursor: not-allowed;
+		&:hover {
+			@include style(transparent, #eee, #eee);
+		}
+		&:focus {
+			outline: 0;
+		}
+	}
+}
