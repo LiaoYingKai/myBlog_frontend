@@ -1,0 +1,11 @@
+.text-input {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	p {
+		margin-top: 6px;
+	}
+	&__content {
+		margin-left: 12px;
+	}
+}
