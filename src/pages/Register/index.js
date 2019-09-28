@@ -1,11 +1,8 @@
 import React, { useState, } from 'react';
-import PropTypes from 'prop-types';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import TextInput from '../../components/text-input';
 import './style.scss';
-
-const propTypes = {};
 
 const {
 	SOLID,
@@ -16,6 +13,17 @@ function Main() {
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
 	const [userName, setUserName] = useState('');
+
+	function _handleInitInputValue() {
+		setAccount('');
+		setPassword('');
+		setUserName('');
+	}
+
+	function _handleSubmit() {
+		console.log({ account: account, password: password, user_name: userName });
+		_handleInitInputValue();
+	}
 
 	return (
 		<div className="register__container">
@@ -52,20 +60,17 @@ function Main() {
 			<div className="register__button-group">
 				<Button
 					text={"註冊"}
-					onClick={() => {console.log("test")}}
+					onClick={_handleSubmit}
 					type={SOLID}
 				/>
 				<Button
 					text={"取消"}
-					onClick={() => {console.log("test")}}
+					onClick={_handleInitInputValue}
 					type={HOLE}
 				/>
 			</div>
-
 		</div>
 	);
 }
-
-Main.propTypes = propTypes;
 
 export default Main;
