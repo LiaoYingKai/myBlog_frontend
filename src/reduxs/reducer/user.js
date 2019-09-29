@@ -19,15 +19,15 @@ export default function todo(state = initState, action) {
 	switch (action.type) {
 		case START_CREATE_USER: {
 			return state
-				.set('createStatue', 'start');
+				.set('createStatus', 'start');
 		}
 		case CREATE_USER_SUCCESS: {
 			return state
-				.set('createStatue', 'success');
+				.set('createStatus', 'success');
 		}
 		case CREATE_USER_FAIL: {
 			return state
-				.set('createStatue', 'fail');
+				.set('createStatus', 'fail');
 		}
 		case START_LOGIN: {
 			return state

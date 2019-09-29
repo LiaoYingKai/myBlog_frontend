@@ -1,7 +1,11 @@
 import React, { useState, } from 'react';
+import { useDispatch } from 'react-redux';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import TextInput from '../../components/text-input';
+import {
+	startCreateUser
+} from '../../actions/user-actions';
 import './style.scss';
 
 const {
@@ -13,7 +17,11 @@ function Main() {
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
 	const [userName, setUserName] = useState('');
+	const dispatch = useDispatch();
 
+	function startCreate() {
+		return dispatch(startCreateUser({ account, password, user_name: userName }));
+	}
 	function _handleInitInputValue() {
 		setAccount('');
 		setPassword('');
@@ -60,7 +68,7 @@ function Main() {
 			<div className="register__button-group">
 				<Button
 					text={"註冊"}
-					onClick={_handleSubmit}
+					onClick={startCreate}
 					type={SOLID}
 				/>
 				<Button
