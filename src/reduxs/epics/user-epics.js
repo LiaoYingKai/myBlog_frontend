@@ -3,26 +3,30 @@ import { ajax } from 'rxjs/ajax';
 import {
 	map,
 	mergeMap,
+	catchError,
 } from 'rxjs/operators';
 import {
 	START_CREATE_USER,
 } from '../../actions/action-type';
 import {
-	createUserSuccess
+	createUserSuccess,
+	createUserFail
 } from '../../actions/user-actions';
 
+const API_URL = 'http://localhost:8000';
 
 export function userEpics(action$) {
 	return action$.pipe(
 		ofType(START_CREATE_USER),
 		mergeMap(action => (
-			ajax('http://localhost:8000/users')
-		).pipe(
-			map(payload => {
-				console.log(payload.response);
-				console.log(action)
-				return createUserSuccess(payload.response);
+			ajax({
+				url: `${API_URL}/users/create`,
+				method: 'POST',
+				body: action.data
 			})
+		).pipe(
+			map(payload => createUserSuccess(payload.response)),
+			catchError(payload => createUserFail(payload.message))
 		))
 	);
 }

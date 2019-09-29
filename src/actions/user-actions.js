@@ -7,12 +7,10 @@ import {
 	LOGIN_FAIL,
 } from './action-type';
 
-export function startCreateUser({ account, password, user_name }) {
+export function startCreateUser(data) {
 	return {
 		type: START_CREATE_USER,
-		account,
-		password,
-		user_name,
+		data
 	};
 }
 

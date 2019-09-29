@@ -19,7 +19,7 @@ function Main() {
 	const [userName, setUserName] = useState('');
 	const dispatch = useDispatch();
 
-	function startCreate() {
+	function _startCreateUser() {
 		return dispatch(startCreateUser({ account, password, user_name: userName }));
 	}
 	function _handleInitInputValue() {
@@ -29,7 +29,7 @@ function Main() {
 	}
 
 	function _handleSubmit() {
-		console.log({ account: account, password: password, user_name: userName });
+		_startCreateUser();
 		_handleInitInputValue();
 	}
 
@@ -68,7 +68,7 @@ function Main() {
 			<div className="register__button-group">
 				<Button
 					text={"註冊"}
-					onClick={startCreate}
+					onClick={_handleSubmit}
 					type={SOLID}
 				/>
 				<Button
