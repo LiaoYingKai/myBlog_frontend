@@ -11,6 +11,7 @@ import {
 const initState = Map({
 	userData: {},
 	createStatus: '',
+	createErrorMessage: '',
 	loginStatua: '',
 	loginErrorMessage: '',
 });
@@ -27,6 +28,7 @@ export default function todo(state = initState, action) {
 		}
 		case CREATE_USER_FAIL: {
 			return state
+				.set('createErrorMessage', action.error)
 				.set('createStatus', 'fail');
 		}
 		case START_LOGIN: {

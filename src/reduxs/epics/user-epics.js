@@ -25,8 +25,11 @@ export function userEpics(action$) {
 				body: action.data
 			})
 		).pipe(
-			map(payload => createUserSuccess(payload.response)),
-			catchError(payload => createUserFail(payload.message))
+			map(payload => payload.response),
+			map(response => createUserSuccess(response)),
+			catchError(payload => [
+				createUserFail(payload.response.message)
+			])
 		))
 	);
 }

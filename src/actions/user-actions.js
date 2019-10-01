@@ -21,9 +21,10 @@ export function createUserSuccess(payload) {
 	};
 }
 
-export function createUserFail() {
+export function createUserFail(error) {
 	return {
-		type: CREATE_USER_FAIL
+		type: CREATE_USER_FAIL,
+		error
 	};
 }
 
