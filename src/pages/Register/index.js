@@ -13,7 +13,7 @@ const {
 	HOLE,
 } = Button.TypeEnums;
 
-function Main() {
+function RegisterPage() {
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
 	const [userName, setUserName] = useState('');
@@ -81,4 +81,4 @@ function Main() {
 	);
 }
 
-export default Main;
+export default RegisterPage;
