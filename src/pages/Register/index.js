@@ -1,22 +1,38 @@
-import React, { useState, } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropsTypes from 'prop-types';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import TextInput from '../../components/text-input';
-import {
-	startCreateUser
-} from '../../actions/user-actions';
+import { startCreateUser } from '../../actions/user-actions';
+import { LoadingStatusEnums } from '../../lib/enums';
 import './style.scss';
+
+const propTypes = {
+	history: PropsTypes.object,
+};
+
+const {
+	SUCCESS,
+} = LoadingStatusEnums;
 
 const {
 	SOLID,
 	HOLE,
 } = Button.TypeEnums;
 
-function RegisterPage() {
+function RegisterPage({ history }) {
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
 	const [userName, setUserName] = useState('');
+	const createUserStatus = useSelector(state => state.user.get("createUserStatus"));
+
+	useEffect(() => {
+		if (createUserStatus === SUCCESS) {
+			history.push("/login");
+		}
+	},[createUserStatus]);
+
 	const dispatch = useDispatch();
 
 	function _startCreateUser() {
@@ -80,5 +96,7 @@ function RegisterPage() {
 		</div>
 	);
 }
+
+RegisterPage.propTypes = propTypes;
 
 export default RegisterPage;

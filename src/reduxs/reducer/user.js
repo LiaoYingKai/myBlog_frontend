@@ -7,12 +7,20 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 } from '../../actions/action-type';
+import { LoadingStatusEnums } from '../../lib/enums';
+
+const {
+	NONE,
+	SUCCESS,
+	FAILED,
+	LOADING,
+} = LoadingStatusEnums;
 
 const initState = Map({
 	userData: {},
-	createStatus: '',
+	createUserStatus: NONE,
 	createErrorMessage: '',
-	loginStatua: '',
+	loginStatua: NONE,
 	loginErrorMessage: '',
 });
 
@@ -20,29 +28,29 @@ export default function todo(state = initState, action) {
 	switch (action.type) {
 		case START_CREATE_USER: {
 			return state
-				.set('createStatus', 'start');
+				.set('createUserStatus', LOADING);
 		}
 		case CREATE_USER_SUCCESS: {
 			return state
-				.set('createStatus', 'success');
+				.set('createUserStatus', SUCCESS);
 		}
 		case CREATE_USER_FAIL: {
 			return state
 				.set('createErrorMessage', action.error)
-				.set('createStatus', 'fail');
+				.set('createUserStatus', FAILED);
 		}
 		case START_LOGIN: {
 			return state
-				.set('loginStatua', 'start');
+				.set('loginStatua', LOADING);
 		}
 		case LOGIN_SUCCESS: {
 			return state
-				.set('loginStatua', 'start')
+				.set('loginStatua', SUCCESS)
 				.set('userData', action.data);
 		}
 		case LOGIN_FAIL: {
 			return state
-				.set('loginStatua', 'fail')
+				.set('loginStatua', FAILED)
 				.set('loginStatua', action.error);
 		}
 		default: {
