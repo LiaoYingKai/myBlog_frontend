@@ -1,0 +1,31 @@
+@mixin type-style($color, $border-color) {
+	color: $color;
+	border: 1px solid $border-color;
+}
+.notify {
+	position: absolute;
+	width: 150px;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 6px 16px;
+	transition: 0.5s;
+	opacity: 0;
+	top: -30px;
+	left: calc( 50% - 75px );
+	&--visible {
+		top: 30px;
+		opacity: 1;
+	}
+	&--success {
+		@include type-style(green, green)
+	}
+	&--info {
+		@include type-style(blue, blue)
+
+	}
+	&--error {
+		@include type-style(red, red)
+
+	}
+}

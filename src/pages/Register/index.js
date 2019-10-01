@@ -4,9 +4,11 @@ import PropsTypes from 'prop-types';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import TextInput from '../../components/text-input';
+import Noifty from '../../components/notify';
 import { startCreateUser } from '../../actions/user-actions';
 import { LoadingStatusEnums } from '../../lib/enums';
 import './style.scss';
+import Notify from '../../components/notify';
 
 const propTypes = {
 	history: PropsTypes.object,
@@ -14,6 +16,7 @@ const propTypes = {
 
 const {
 	SUCCESS,
+	FAILED,
 } = LoadingStatusEnums;
 
 const {
@@ -22,15 +25,27 @@ const {
 } = Button.TypeEnums;
 
 function RegisterPage({ history }) {
+	const duration = 2 * 1000;
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
 	const [userName, setUserName] = useState('');
-	const createUserStatus = useSelector(state => state.user.get("createUserStatus"));
+	const [visible, setVidible] = useState(false);
+
+	const createUserStatus = useSelector(state => state.user.get('createUserStatus'));
+	const createFailedMessage = useSelector(state => state.user.get('createErrorMessage'));
 
 	useEffect(() => {
 		if (createUserStatus === SUCCESS) {
-			history.push("/login");
+			history.push('/login');
+
 		}
+		if (createUserStatus === FAILED) {
+			setVidible(true);
+			setTimeout(() => {
+				setVidible(false);
+			}, duration);
+		}
+		
 	},[createUserStatus]);
 
 	const dispatch = useDispatch();
@@ -93,6 +108,11 @@ function RegisterPage({ history }) {
 					type={HOLE}
 				/>
 			</div>
+			<Noifty
+				isVisible={visible}
+				text={createFailedMessage}
+				type={Notify.TypeEnums.ERROR}
+			/>
 		</div>
 	);
 }
