@@ -1,5 +1,5 @@
 import { ofType, } from 'redux-observable';
-import { ajax } from 'rxjs/ajax';
+import { api } from '../../lib/API-utils';
 import {
 	map,
 	mergeMap,
@@ -16,17 +16,11 @@ import {
 	loginFail
 } from '../../actions/user-actions';
 
-const API_URL = 'http://localhost:8000';
-
 export function registerEpics(action$) {
 	return action$.pipe(
 		ofType(START_CREATE_USER),
 		mergeMap(action => (
-			ajax({
-				url: `${API_URL}/user/create`,
-				method: 'POST',
-				body: action.data
-			})
+			api('POST', 'user/create', action.data)
 		).pipe(
 			map(payload => payload.response),
 			map(response => createUserSuccess(response)),
@@ -41,11 +35,7 @@ export function loginEpics(action$) {
 	return action$.pipe(
 		ofType(START_LOGIN),
 		mergeMap(action => (
-			ajax({
-				url: `${API_URL}/user/login`,
-				method: 'POST',
-				body: action.data
-			})
+			api('POST', 'user/login', action.data)
 		).pipe(
 			map(payload => loginSuccess(payload.response)),
 			catchError(payload => [
