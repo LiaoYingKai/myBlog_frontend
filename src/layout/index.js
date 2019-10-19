@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, } from 'react-router-dom';
 import LayoutRouter from '../route';
-import LayoutHeader from '../components/layout-header';
+import LayoutHeader from '../features/layout-header';
 import './style.scss';
 
 function Layout() {

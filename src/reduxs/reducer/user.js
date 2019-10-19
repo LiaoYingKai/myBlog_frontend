@@ -19,7 +19,7 @@ const {
 } = LoadingStatusEnums;
 
 const initState = Map({
-	userData: {},
+	userData: Map(),
 	createUserStatus: NONE,
 	createErrorMessage: '',
 	loginStatua: NONE,
@@ -46,11 +46,12 @@ export default function todo(state = initState, action) {
 				.set('loginStatua', LOADING);
 		}
 		case LOGIN_SUCCESS: {
-			const { token } = action.response.response;
+			const { token, userData } = action.response.response;
 
 			setCookie('userToken', token);
 
 			return state
+				.set('userData', Map(userData))
 				.set('loginStatua', SUCCESS);
 		}
 		case LOGIN_FAIL: {
@@ -61,7 +62,7 @@ export default function todo(state = initState, action) {
 		case LOGOUT: {
 			clearCookie('userToken');
 			return state
-				.set('userData', Map({}));
+				.set('userData', Map());
 		}
 		default: {
 			return state;
