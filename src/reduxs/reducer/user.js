@@ -8,6 +8,7 @@ import {
 	LOGIN_FAIL,
 } from '../../actions/action-type';
 import { LoadingStatusEnums } from '../../lib/enums';
+import { setCookie } from '../../lib/cookie-utils';
 
 const {
 	NONE,
@@ -44,9 +45,12 @@ export default function todo(state = initState, action) {
 				.set('loginStatua', LOADING);
 		}
 		case LOGIN_SUCCESS: {
+			const { token } = action.response.response;
+
+			setCookie('userToken', token);
+
 			return state
-				.set('loginStatua', SUCCESS)
-				.set('userData', action.data);
+				.set('loginStatua', SUCCESS);
 		}
 		case LOGIN_FAIL: {
 			return state

@@ -28,22 +28,21 @@ export function createUserFail(error) {
 	};
 }
 
-export function startLogin({ account, password }) {
+export function startLogin(data) {
 	return {
 		type: START_LOGIN,
-		account,
-		password,
-	};
-}
-
-export function LoginSuccess(data) {
-	return {
-		type: LOGIN_SUCCESS,
 		data,
 	};
 }
 
-export function LoginFail(error) {
+export function loginSuccess(response) {
+	return {
+		type: LOGIN_SUCCESS,
+		response,
+	};
+}
+
+export function loginFail(error) {
 	return {
 		type: LOGIN_FAIL,
 		error

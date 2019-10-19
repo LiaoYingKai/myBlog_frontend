@@ -19,8 +19,7 @@ function LoginPage() {
 	const dispatch = useDispatch();
 
 	function _startCreateUser() {
-		console.log(account, password);
-		// return dispatch(startLogin({ account, password }));
+		return dispatch(startLogin({ account, password }));
 	}
 	function _handleInitInputValue() {
 		setAccount('');
