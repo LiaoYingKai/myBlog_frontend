@@ -6,9 +6,10 @@ import {
 	START_LOGIN,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	LOGOUT,
 } from '../../actions/action-type';
 import { LoadingStatusEnums } from '../../lib/enums';
-import { setCookie } from '../../lib/cookie-utils';
+import { setCookie, clearCookie } from '../../lib/cookie-utils';
 
 const {
 	NONE,
@@ -56,6 +57,11 @@ export default function todo(state = initState, action) {
 			return state
 				.set('loginStatua', FAILED)
 				.set('loginStatua', action.error);
+		}
+		case LOGOUT: {
+			clearCookie('userToken');
+			return state
+				.set('userData', Map({}));
 		}
 		default: {
 			return state;

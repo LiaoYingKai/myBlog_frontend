@@ -5,6 +5,7 @@ import {
 	START_LOGIN,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	LOGOUT,
 } from './action-type';
 
 export function startCreateUser(data) {
@@ -46,5 +47,11 @@ export function loginFail(error) {
 	return {
 		type: LOGIN_FAIL,
 		error
+	};
+}
+
+export function logout() {
+	return {
+		type: LOGOUT,
 	};
 }
