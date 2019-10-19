@@ -5,10 +5,13 @@ export function setCookie (name, value = '', days = 1) {
 	document.cookie = `${name}=${value}; expirse=${date.toUTCString()}; path=/`;
 }
 
-export function getToken(name) {
+export function getCookie(name) {
 	const cookies = document.cookie.split('; ');
-	const cookie = cookies.filter(cookie => cookie.includes(name))[0]
-		.replace(`${name}=`, '');
+	const cookie = cookies.filter(cookie => cookie.includes(name))[0];
 
-	return cookie;
+	if (cookie) {
+		return cookie.replace(`${name}=`, '');
+	} else {
+		return '';
+	}
 }
