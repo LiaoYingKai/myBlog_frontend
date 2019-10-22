@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, } from 'react-router-dom';
 import LayoutRouter from '../route';
 import LayoutHeader from '../features/layout-header';
+import RedirectNotify from '../features/redirect-notify';
 import './style.scss';
 
 function Layout() {
@@ -11,6 +12,7 @@ function Layout() {
 			<div className="home-page__content">
 				<LayoutRouter/>
 			</div>
+			<RedirectNotify/>
 		</Router>
 	);
 }
