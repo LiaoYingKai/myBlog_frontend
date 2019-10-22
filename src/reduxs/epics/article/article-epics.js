@@ -6,23 +6,23 @@ import {
 	catchError,
 } from 'rxjs/operators';
 import {
-	START_FETCH_ARTICLE_LIST
+	START_FETCH_ARTICLE
 } from '../../../actions/action-type';
 import {
-	fetchArticleListSuccess,
-	fetchArticleListFail
+	fetchArticleSuccess,
+	fetchArticleFail
 } from '../../../actions/article-actions';
 
-export function articleListEpic(action$) {
+export function articleEpic(action$) {
 	return action$.pipe(
-		ofType(START_FETCH_ARTICLE_LIST),
+		ofType(START_FETCH_ARTICLE),
 		mergeMap(action => (
-			api('GET', 'article/list')
+			api('GET', `article/${action.articleId}`)
 		).pipe(
 			map(payload => payload.response),
-			map(payload => fetchArticleListSuccess(payload.response)),
+			map(payload => fetchArticleSuccess(payload.response)),
 			catchError(payload => [
-				fetchArticleListFail(payload.response.message)
+				fetchArticleFail(payload.response.message)
 			])
 		))
 	);
