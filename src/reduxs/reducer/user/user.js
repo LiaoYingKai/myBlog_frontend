@@ -7,9 +7,9 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
-} from '../../actions/action-type';
-import { LoadingStatusEnums } from '../../lib/enums';
-import { setCookie, clearCookie } from '../../lib/cookie-utils';
+} from '../../../actions/action-type';
+import { LoadingStatusEnums } from '../../../lib/enums';
+import { setCookie, clearCookie } from '../../../lib/cookie-utils';
 
 const {
 	NONE,

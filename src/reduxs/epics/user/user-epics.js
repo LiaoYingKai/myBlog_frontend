@@ -1,5 +1,5 @@
 import { ofType, } from 'redux-observable';
-import { api } from '../../lib/API-utils';
+import { api } from '../../../lib/API-utils';
 import {
 	map,
 	mergeMap,
@@ -8,15 +8,15 @@ import {
 import {
 	START_CREATE_USER,
 	START_LOGIN,
-} from '../../actions/action-type';
+} from '../../../actions/action-type';
 import {
 	createUserSuccess,
 	createUserFail,
 	loginSuccess,
 	loginFail
-} from '../../actions/user-actions';
+} from '../../../actions/user-actions';
 
-export function registerEpics(action$) {
+export function registerEpic(action$) {
 	return action$.pipe(
 		ofType(START_CREATE_USER),
 		mergeMap(action => (
@@ -31,7 +31,7 @@ export function registerEpics(action$) {
 	);
 }
 
-export function loginEpics(action$) {
+export function loginEpic(action$) {
 	return action$.pipe(
 		ofType(START_LOGIN),
 		mergeMap(action => (
