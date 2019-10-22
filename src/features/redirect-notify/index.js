@@ -11,17 +11,13 @@ const propTypes = {
 };
 
 const {
-	NONE,
 	SUCCESS,
 	FAILED,
-	LOADING,
 } = LoadingStatusEnums;
 
 const {
 	HOME,
 	LOGIN,
-	REGISTER,
-	USER_EDIT,
 } = PathEnums;
 
 const {
@@ -34,6 +30,7 @@ function RedirectNotify({ history, }) {
 	const [text, setText] = useState(' ');
 
 	const loginStatus = useSelector(state => state.user.toObject().loginStatus);
+	const registerStatus = useSelector(state => state.user.toObject().createUserStatus);
 
 	useEffect(() => {
 		if (loginStatus === SUCCESS) {
@@ -43,7 +40,18 @@ function RedirectNotify({ history, }) {
 		if (loginStatus === FAILED) {
 			setNotify(TypeEnums.ERROR, '登入失敗');
 		}
+		
 	}, [loginStatus]);
+
+	useEffect(() => {
+		if (registerStatus === SUCCESS) {
+			history.push(LOGIN);
+			setNotify(TypeEnums.SUCCESS, '註冊成功，請登入');
+		}
+		if (registerStatus === FAILED) {
+			setNotify(TypeEnums.ERROR, '註冊失敗');
+		}
+	}, [registerStatus]);
 
 	function setNotify(type, text) {
 		setType(type);
