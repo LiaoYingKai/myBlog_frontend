@@ -1,0 +1,26 @@
+.article {
+	&__headline {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 12px;
+	}
+	&__title {
+		line-height: 60px;
+		font-size: 36px;
+	}
+	&__info {
+		color: #8c8c8c;
+		font-size: 16px;
+	}
+	&__content {
+		font-size: 16px;
+		padding-bottom: 12px;
+		min-height: calc(100vh - 170px);
+		box-sizing: border-box;
+	}
+	&__created {
+		text-align: right;
+		color: #8c8c8c;
+	}
+}
