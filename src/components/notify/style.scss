@@ -4,7 +4,8 @@
 }
 .notify {
 	position: absolute;
-	width: 150px;
+	min-width: 150px;
+	text-align: center;
 	box-sizing: border-box;
 	background-color: #fff;
 	border-radius: 4px;
