@@ -9,7 +9,7 @@ function Layout() {
 	return (
 		<Router>
 			<LayoutHeader/>
-			<div className="home-page__content">
+			<div className="content">
 				<LayoutRouter/>
 			</div>
 			<RedirectNotify/>
