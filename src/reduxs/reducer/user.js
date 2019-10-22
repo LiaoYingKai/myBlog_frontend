@@ -22,7 +22,7 @@ const initState = Map({
 	userData: Map(),
 	createUserStatus: NONE,
 	createErrorMessage: '',
-	loginStatua: NONE,
+	loginStatus: NONE,
 	loginErrorMessage: '',
 });
 
@@ -43,7 +43,7 @@ export default function todo(state = initState, action) {
 		}
 		case START_LOGIN: {
 			return state
-				.set('loginStatua', LOADING);
+				.set('loginStatus', LOADING);
 		}
 		case LOGIN_SUCCESS: {
 			const { token, userData } = action.response.response;
@@ -52,12 +52,12 @@ export default function todo(state = initState, action) {
 
 			return state
 				.set('userData', Map(userData))
-				.set('loginStatua', SUCCESS);
+				.set('loginStatus', SUCCESS);
 		}
 		case LOGIN_FAIL: {
 			return state
-				.set('loginStatua', FAILED)
-				.set('loginStatua', action.error);
+				.set('loginStatus', FAILED)
+				.set('loginErrorMessage', action.error);
 		}
 		case LOGOUT: {
 			clearCookie('userToken');

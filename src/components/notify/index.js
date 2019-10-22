@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import './style.scss';
@@ -22,7 +22,6 @@ const defaultProps = {
 };
 
 function Notify({ type, text, isVisible }) {
-	
 	return (
 		<div className={cx('notify', `notify--${type}`, { 'notify--visible': isVisible })} >
 			{text}

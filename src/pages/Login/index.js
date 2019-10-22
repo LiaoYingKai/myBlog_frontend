@@ -16,9 +16,10 @@ const {
 function LoginPage() {
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
+
 	const dispatch = useDispatch();
 
-	function _startCreateUser() {
+	function _handleLogin() {
 		return dispatch(startLogin({ account, password }));
 	}
 	function _handleInitInputValue() {
@@ -27,7 +28,7 @@ function LoginPage() {
 	}
 
 	function _handleSubmit() {
-		_startCreateUser();
+		_handleLogin();
 		_handleInitInputValue();
 	}
 
