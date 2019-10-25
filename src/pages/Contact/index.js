@@ -1,29 +1,16 @@
-import React from 'react';
+import React, { useState, } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, } from 'react-router-dom';
-import { RenderRoute } from '../../route/renderRoute';
-import './style.scss';
 
-const propTypes = {
-	routes: PropTypes.array,
-};
+const propTypes = {};
 
-function Contact({ routes }) {
+function CreateArticle() {
 	return (
-		<div className="contact">
-			<ul>
-				<li>
-					<NavLink exact to="/contact/me">Me</NavLink>
-				</li>
-				<li>
-					<NavLink to="/contact/he">He</NavLink>
-				</li>
-			</ul>
-			{RenderRoute(routes)}
+		<div>
+			Hello World
 		</div>
 	);
 }
 
-Contact.propTypes = propTypes;
+CreateArticle.propTypes = propTypes;
 
-export default Contact;
+export default CreateArticle;

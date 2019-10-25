@@ -12,6 +12,7 @@ const {
 	LOGIN,
 	REGISTER,
 	USER_EDIT,
+	CREATE_ARTICLE,
 } = PathEnums;
 
 function LayoutHeader() {
@@ -52,9 +53,11 @@ function LayoutHeader() {
 					<li>
 						<NavLink exact to={HOME} activeClassName="activeLink">首頁</NavLink>
 					</li>
-					<li>
-						<NavLink to="/Contact" activeClassName="activeLink">Contact</NavLink>
-					</li>
+					{
+						user ? <li>
+							<NavLink to={CREATE_ARTICLE} activeClassName="activeLink">建立文章</NavLink>
+						</li> : null
+					}
 				</ul>
 				<div className="header__user">
 					{_renderUser()}

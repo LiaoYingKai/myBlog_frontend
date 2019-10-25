@@ -6,8 +6,6 @@ const Register = loadComponent({ loader: () => import('../pages/Register') });
 const UserEdit = loadComponent({ loader: () => import('../pages/UserEdit') });
 const Article = loadComponent({ loader: () => import('../pages/Article') });
 const Contact = loadComponent({ loader: () => import('../pages/Contact') });
-const Me =  loadComponent({ loader: () => import('../pages/Contact/Me') });
-const Another =  loadComponent({ loader: () => import('../pages/Contact/Another') });
 
 const PathEnums = {
 	HOME: '/',
@@ -15,6 +13,7 @@ const PathEnums = {
 	REGISTER: '/register',
 	USER_EDIT: '/user-edit',
 	ARTICLE: '/article/:id',
+	CREATE_ARTICLE: '/create/article',
 };
 
 const {
@@ -23,6 +22,7 @@ const {
 	REGISTER,
 	USER_EDIT,
 	ARTICLE,
+	CREATE_ARTICLE,
 } = PathEnums;
 
 export const config = [
@@ -44,29 +44,14 @@ export const config = [
 	{
 		path: USER_EDIT,
 		component: UserEdit,
-		name: 'UserEdit',	
 	},
 	{
 		path:ARTICLE,
 		component: Article,
 	},
 	{
-		path: '/contact',
+		path: CREATE_ARTICLE,
 		component: Contact,
-		name: 'Contact',
-		routes: [
-			{
-				path: '/contact/me',
-				component: Me,
-				exact: true,
-				name: 'Me'
-			},
-			{
-				path: '/contact/:another',
-				component: Another,
-				name: 'Another'
-			}
-		]
 	},
 ];
 
